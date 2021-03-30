@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroORM", "MicroORM\MicroORM.csproj", "{5DF2A67D-1237-4179-9DAD-018CA766D025}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroORMTests", "tests\MicroORMTests\MicroORMTests.csproj", "{3314FBBB-9F24-4D26-A665-0AFD772EB32E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DF2A67D-1237-4179-9DAD-018CA766D025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF2A67D-1237-4179-9DAD-018CA766D025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF2A67D-1237-4179-9DAD-018CA766D025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF2A67D-1237-4179-9DAD-018CA766D025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3314FBBB-9F24-4D26-A665-0AFD772EB32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3314FBBB-9F24-4D26-A665-0AFD772EB32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3314FBBB-9F24-4D26-A665-0AFD772EB32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3314FBBB-9F24-4D26-A665-0AFD772EB32E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FAB371B-D5FC-4259-920D-906DA265B804}
+	EndGlobalSection
+EndGlobal
