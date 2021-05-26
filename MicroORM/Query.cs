@@ -6,16 +6,16 @@ namespace MicroORM
 {
     public class Query
     {
-        public static string GetQuerySQL<TEntity>(IEnumerable<PropertyParam> PropertiesParam)
+        public static string GetQuerySQL<TEntity>(IEnumerable<PropertyParam> PropertiesParam, string schema)
         {
-            string select = GetSelectSQL<TEntity>();
+            string select = GetSelectSQL<TEntity>(schema);
             string where = GetWhereSQL(PropertiesParam);
 
             return string.Concat(select, where);
         }
 
-        private static string GetSelectSQL<TEntity>() =>
-            $" select {GetColumnsSQL<TEntity>()} from {GetTableSQL<TEntity>()} with(nolock) ";
+        private static string GetSelectSQL<TEntity>(string schema) =>
+            $" select {GetColumnsSQL<TEntity>()} from {schema}.{GetTableSQL<TEntity>()} with(nolock) ";
 
         private static string GetWhereSQL(IEnumerable<PropertyParam> PropertiesParam)
         {
@@ -23,9 +23,11 @@ namespace MicroORM
             return $"{where}{string.Join(" and ", GetConditionalWhere(PropertiesParam))}";
         }
 
-        private static string GetColumnsSQL<TEntity>() => string.Join(", ", Type.GetNamesPropertyType<TEntity>());
+        private static string GetColumnsSQL<TEntity>() => 
+            string.Join(", ", Type.GetNamesPropertyType<TEntity>());
         
-        private static string GetTableSQL<TEntity>() => typeof(TEntity).GetTypeInfo().Name;
+        private static string GetTableSQL<TEntity>() => 
+            typeof(TEntity).GetTypeInfo().Name;
         
         private static IEnumerable<string> GetConditionalWhere(IEnumerable<PropertyParam> PropertiesParam) =>
             PropertiesParam.Select(x => x.Name + " = " + x.NameParam);

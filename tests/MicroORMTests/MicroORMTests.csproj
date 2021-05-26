@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SevenORM\MicroORM.csproj" />
+    <ProjectReference Include="..\..\MicroORM\MicroORM.csproj" />
   </ItemGroup>
 
 </Project>

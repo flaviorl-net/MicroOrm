@@ -6,12 +6,12 @@ namespace MicroORM
 {
     public class Command
     {
-        public static DbCommand CreateCommand<TEntity>(DbConnection conn, string query = null, object param = null)
+        public static DbCommand CreateCommand<TEntity>(DbConnection conn, string query = null, object param = null, string schema = "dbo")
         {
             var propertiesParam = Param.GetProperties(param);
 
             var querySql = string.IsNullOrWhiteSpace(query)
-                ? Query.GetQuerySQL<TEntity>(propertiesParam)
+                ? Query.GetQuerySQL<TEntity>(propertiesParam, schema)
                 : query;
 
             return GetCommand(conn, querySql, propertiesParam);

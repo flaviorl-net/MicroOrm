@@ -13,7 +13,7 @@ namespace MicroORMTests
 
         public MicroORMTests()
         {
-            strConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flavio\source\Repos\SevenORM\tests\SevenORMTests\Database1.mdf;Integrated Security=True";
+            strConn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flavio\source\Repos\MicroORM\tests\MicroORMTests\Database1.mdf;Integrated Security=True";
         }
 
         [Fact]
