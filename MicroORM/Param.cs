@@ -20,4 +20,18 @@ namespace MicroORM
         }
 
     }
+
+    public static IEnumerable<PropertyParam> GetPropertiesFromEntity<TEntity>(TEntity entity)
+    {
+        if (entity == null)
+            return new List<PropertyParam>();
+
+        return typeof(TEntity).GetProperties()
+            .Select(x => new PropertyParam
+            {
+                Name = x.Name,
+                NameParam = string.Concat("@", x.Name),
+                Value = x.GetValue(entity)
+            });
+    }
 }

@@ -33,4 +33,15 @@ namespace MicroORM
             PropertiesParam.Select(x => x.Name + " = " + x.NameParam);
 
     }
+
+    public static string GetInsertSQL<TEntity>(IEnumerable<PropertyParam> propertiesParam, string schema)
+    {
+        if (propertiesParam == null || !propertiesParam.Any())
+            return string.Empty;
+        
+        string columns = string.Join(", ", propertiesParam.Select(x => x.Name));
+        string values = string.Join(", ", propertiesParam.Select(x => x.NameParam));
+        
+        return $" insert into {schema}.{GetTableSQL<TEntity>()} ({columns}) values ({values}) ";
+    }
 }

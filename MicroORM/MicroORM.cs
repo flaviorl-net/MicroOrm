@@ -18,5 +18,15 @@ namespace MicroORM
         public static IEnumerable<TEntity> Query<TEntity>(this IDbConnection conn, string query, object param = null, string schema = "dbo") =>
             Reader.CreateListObject<TEntity>(Command.CreateCommand<TEntity>((DbConnection)conn, query, param, schema));
 
+        public static int Insert<TEntity>(this IDbConnection conn, TEntity entity, string schema = "dbo") =>
+            ExecuteCommand<TEntity>(Command.CreateInsertCommand<TEntity>((DbConnection)conn, entity, schema));
+
+        private static int ExecuteCommand<TEntity>(DbCommand command)
+        {
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
     }
 }
