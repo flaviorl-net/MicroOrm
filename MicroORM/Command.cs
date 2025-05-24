@@ -17,6 +17,15 @@ namespace MicroORM
             return GetCommand(conn, querySql, propertiesParam);
         }
 
+        public static DbCommand CreateInsertCommand<TEntity>(DbConnection conn, TEntity entity, string schema = "dbo")
+        {
+            var propertiesParam = Param.GetPropertiesFromEntity(entity);
+            
+            var querySql = Query.GetInsertSQL<TEntity>(propertiesParam, schema);
+            
+            return GetCommand(conn, querySql, propertiesParam);
+        }
+
         private static DbCommand GetCommand(DbConnection conn,
             string query,
             IEnumerable<PropertyParam> propertiesParam)

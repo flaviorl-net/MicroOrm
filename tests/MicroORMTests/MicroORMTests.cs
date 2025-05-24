@@ -98,8 +98,31 @@ namespace MicroORMTests
             cliente.Should().NotBeNull();
             cliente.Nome.Should().Be("mel");
         }
-    }
 
+        [Fact]
+        public void InsertTest()
+        {
+            var cliente = new Cliente
+            {
+                CPF = "12345678901",
+                Nome = "Novo Cliente",
+                DtNascimento = System.DateTime.Now.AddYears(-30),
+                Celular = "11987654321",
+                Email = "novo.cliente@example.com",
+                Ativo = true,
+                IDVinculo = 1
+            };
+            
+            int rowsAffected;
+            
+            using (SqlConnection sqlConnection = new SqlConnection(strConn))
+            {
+                rowsAffected = sqlConnection.Insert(cliente);
+            }
+            
+            rowsAffected.Should().Be(1);
+        }
+    }
 }
 
 
